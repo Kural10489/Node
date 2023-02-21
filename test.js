@@ -19,7 +19,15 @@ const server=http.createServer((req,res)=>{
     return res.end();
     }
     if(url==="/message" && method=="POST"){
-       
+            const body=[]
+            req.on('data',(chunck)=>{
+                body.push(chunck)
+            })
+            req.on('end',()=>{
+                const parsedBody = Buffer.concat(body).toString().split('=');
+                const message=parsedBody[1];
+                console.log(message);
+            })
            fs.writeFileSync('hello.txt','Dummy');
            res.setHeader('Location','/')
            res.statusCode=302; 
