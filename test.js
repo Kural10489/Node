@@ -1,9 +1,9 @@
 const { fstat } = require('fs');
 const http =require('http');
-const fs = require
+const fs = require('fs');
 const server=http.createServer((req,res)=>{
     const url=req.url;
-
+    const method=req.method;
 
     if(url==='/'){
     res.setHeader('Content-type','text/html');
@@ -11,17 +11,20 @@ const server=http.createServer((req,res)=>{
     res.write('<head><title>Form</title></head>')
     res.write(`<body>
     <form action="/message" method="POST">
-    <input type="text" name="message"><input>
-    <input type="submit" value="Send"><input>
+    <input type="text" name="message">
+    <input type="submit" value="Send">
     </form>
     </body>`)
     res.write('</html>')
     return res.end();
     }
-    if(url==="/message" && method=='POST'){
-        {
-            
-        }
+    if(url==="/message" && method=="POST"){
+       
+           fs.writeFileSync('hello.txt','Dummy');
+           res.setHeader('Location','/')
+           res.statusCode=302; 
+           return res.end();
+
     }
     res.setHeader('Content-type','text/html');
     res.write('<html>')
