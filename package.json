@@ -1,0 +1,20 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "Node",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kural10489/Node.git"
+  },
+  "author": "Kural",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kural10489/Node/issues"
+  },
+  "homepage": "https://github.com/Kural10489/Node#readme"
+}
