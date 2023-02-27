@@ -12,3 +12,4 @@ emitter.on("Order-pizza",(size)=>{
 });
 console.log("Syncronous Log");
 emitter.emit("Order-pizza","large","chicken");
+
