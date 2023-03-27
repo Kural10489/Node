@@ -5,11 +5,10 @@ const jwt=require('jsonwebtoken');
 const users=require('./models/db.json') 
 const secret =require('./models/secret.json')
 app.use(bodyparser.json());
-app.use(bodyparser.urlencoded({extended:false}))
+app.use(bodyparser.urlencoded({extended:true}))
 
 app.post('/login',(req,res)=>{
     const user=users.find((user)=>{ return user.username==req.body.username})
-    console.log(user);
     if(user){
         if(user.password==req.body.password){
             const token=jwt.sign({userId:user.id
@@ -36,7 +35,7 @@ function checkToken(req,res,next){
                 return; 
             }
             else{
-                req.userId=decode.userid
+                userId=decode.userId
                 next();
             }
         });
@@ -47,9 +46,9 @@ function checkToken(req,res,next){
 }
 
 app.get('/data',checkToken,(req,res)=>{
+ 
     const filtered=secret.filter((a)=>{
-        console.log(req.userId);
-        if(a.userId==req.userId){
+        if(a.userId==userId){
         return a.userSecretInfo
         } 
     })
