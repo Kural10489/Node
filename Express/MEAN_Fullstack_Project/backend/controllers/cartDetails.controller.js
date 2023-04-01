@@ -2,7 +2,7 @@ const db = require("../models/index");
 const Schema = db.cartpage;
 
 exports.cartDetails = (req, res) => {
-  console.log("addtocart page da");
+  console.log("cart page GET da");
     // Validate request
     Schema.find({})
     .then(data => {

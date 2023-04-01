@@ -5,8 +5,16 @@ exports.login= (req,res)=>{
     console.log("Login page Ulla vantan!");
 
 
-  const {email,password}=req.body;
-  const user=Backend.findOne();
-console.log(req.body);
-  console.log(user);
+
+Backend.find({})
+.then(data => {
+  if (!data)
+    res.status(404).send({ message: "Not found with id " + id });
+  else res.send(data);
+})
+.catch(err => {
+  res
+    .status(500)
+    .send({ message: "Error retrieving with id=" + id });
+});
 }

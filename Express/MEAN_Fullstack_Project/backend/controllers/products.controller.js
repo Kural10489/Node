@@ -2,7 +2,7 @@ const db = require("../models/index");
 const Tutorial = db.products;
 
 exports.getProducts = (req, res) => {
-  console.log("products page da ithu");
+  console.log("products page GET ithu");
     // Validate request
     Tutorial.find({})
     .then(data => {

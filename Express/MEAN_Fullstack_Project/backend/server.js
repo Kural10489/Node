@@ -9,6 +9,8 @@ const productsController=require('./controllers/products.controller');
 const cartPageController=require('./controllers/cartpage.controller');
 const cartDetailsController=require('./controllers/cartDetails.controller')
 const deleteProductController=require('./controllers/deleteProduct.controller')
+const orderpageController=require("./controllers/orderpage.controller")
+const orderDetailController=require("./controllers/orderDetails.controller");
 var corsOptions = {
   origin: "http://localhost:4200"
 };
@@ -45,13 +47,14 @@ app.get("/", (req, res) => {
 app.get("/user",loginController.login);
 app.get('/products',productsController.getProducts)
 app.get('/cart',cartDetailsController.cartDetails)
+app.get('/OrderDetails',orderDetailController.orderDetails)
 
 app.post('/cart',cartPageController.addToCart)
 app.post("/register",registerController.create);
 app.post("/user",loginController.login);
+app.post("/OrderDetails",orderpageController.Order)
 
-
-app.delete(`/cart/:id`,deleteProductController.deleteProduct);
+// app.delete(`/cart/:id`,deleteProductController.deleteProduct);
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

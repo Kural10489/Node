@@ -5,12 +5,11 @@ exports.deleteProduct = (req, res) => {
   console.log(" deleting a product da");
     // Validate request
     const id = req.params.id;
-    console.log('id: ',id);
+  
  
 
     Schema.findByIdAndRemove(id)
     .then(data => {
-        console.log(data);
       if (!data) {
         res.status(404).send({
           message: `Cannot delete Tutorial with id=${id}. Maybe Tutorial was not found!`

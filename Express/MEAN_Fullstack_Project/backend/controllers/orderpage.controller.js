@@ -1,8 +1,8 @@
 const db = require("../models/index");
-const Schema = db.cartpage;
+const Schema = db.orderpage;
 
-exports.addToCart = (req, res) => {
-  console.log("addtocart page  POST da");
+exports.Order= (req, res) => {
+  console.log("order page POST da");
     // Validate request
     if (!req.body.id) {
       res.status(400).send({ message: "Content can not be empty!" });
@@ -12,7 +12,7 @@ exports.addToCart = (req, res) => {
   
     // Create a Tutorial
 
-    const cartDetails = new Schema({
+    const orderDetails = new Schema({
         id: req.body.id,
         title: req.body.title,
         price: req.body.price,
@@ -28,8 +28,8 @@ exports.addToCart = (req, res) => {
 
     // Save Tutorial in the database
     
-    cartDetails
-      .save(cartDetails)
+    orderDetails
+      .save(orderDetails)
       .then(data => {
         res.send(data);
       })
