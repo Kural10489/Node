@@ -8,7 +8,9 @@ module.exports = mongoose => {
           mobileNumber: Number,
           email: String,
           password:String,
-          address:String
+          address:String,
+          token:String,
+          username:String
         },
         { timestamps: true }
       )

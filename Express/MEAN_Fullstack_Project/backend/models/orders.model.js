@@ -1,6 +1,6 @@
 module.exports = mongoose => {
     const schema = mongoose.model(
-      "orderspage",
+      "orderspages",
       mongoose.Schema(
         {
           id:Number,
