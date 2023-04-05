@@ -11,7 +11,7 @@ exports.Order= (req, res) => {
     }
   
     // Create a Tutorial
-
+console.log(req.body.username);
     const orderDetails = new Schema({
         id: req.body.id,
         title: req.body.title,
@@ -23,7 +23,8 @@ exports.Order= (req, res) => {
         image: req.body.image,
         image2: req.body.image2,
         image3: req.body.image3,
-        image4: req.body.image4
+        image4: req.body.image4,
+        username:req.body.username
     });
 
     // Save Tutorial in the database
@@ -31,6 +32,7 @@ exports.Order= (req, res) => {
     orderDetails
       .save(orderDetails)
       .then(data => {
+        console.log(data);
         res.send(data);
       })
       .catch(err => {

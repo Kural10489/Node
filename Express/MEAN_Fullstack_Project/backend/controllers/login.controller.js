@@ -6,7 +6,7 @@ exports.login= (req,res)=>{
 
 Backend.find({})
 .then(data => {
-  console.log("Data: ",data);
+
   if (!data)
     res.status(404).send({ message: "Not found with id " + data });
 

@@ -23,7 +23,9 @@ exports.addToCart = (req, res) => {
         image: req.body.image,
         image2: req.body.image2,
         image3: req.body.image3,
-        image4: req.body.image4
+        image4: req.body.image4,
+        username:req.body.username
+        
     });
 
     // Save Tutorial in the database

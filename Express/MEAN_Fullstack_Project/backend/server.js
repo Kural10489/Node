@@ -35,10 +35,7 @@ db.mongoose
     console.log("Cannot connect to the database!", err);
     process.exit();
   });
-// simple route
-// app.get("/", (req, res) => {
-//   res.json({ message: "Welcome to bezkoder application." });
-// });
+
 
 app.get("/", (req, res) => {
    res.json({"YEs":"Running"})

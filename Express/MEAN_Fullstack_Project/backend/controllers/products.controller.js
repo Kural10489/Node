@@ -6,7 +6,7 @@ exports.getProducts = (req, res) => {
     // Validate request
     Tutorial.find({})
     .then(data => {
-      console.log(data);
+
       if (!data)
         res.status(404).send({ message: "Not found Tutorial"});
       else res.send(data);

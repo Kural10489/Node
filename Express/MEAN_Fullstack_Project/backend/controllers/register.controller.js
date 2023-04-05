@@ -25,7 +25,7 @@ exports.create = (req, res) => {
       token:token,
       username:req.body.firstName
     });
-     console.log(tutorial);
+     
     // Save Tutorial in the database
     
     tutorial
