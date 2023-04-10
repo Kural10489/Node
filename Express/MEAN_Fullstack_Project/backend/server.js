@@ -1,8 +1,9 @@
 const express = require("express");
 const cors = require("cors");
-const routes=require('./routes/tutorials.routes')
 const app = express();
+const createError=require('http-errors');
 const db = require("./models");
+
 const registerController=require('./controllers/register.controller')
 const loginController=require('./controllers/login.controller')
 const productsController=require('./controllers/products.controller');
@@ -48,10 +49,16 @@ app.get('/OrderDetails',orderDetailController.orderDetails)
 
 app.post('/cart',cartPageController.addToCart)
 app.post("/register",registerController.create);
+// require("./routes/register.routes")(app)
 app.post("/user",loginController.login);
 app.post("/OrderDetails",orderpageController.Order)
 
 app.delete(`/cart/:id`,deleteProductController.deleteProduct);
+
+app.use(async(req,res,next)=>{
+next(createError.NotFound('This route does not exit'))
+
+})
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

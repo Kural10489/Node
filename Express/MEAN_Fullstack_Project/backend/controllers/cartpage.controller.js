@@ -10,7 +10,7 @@ exports.addToCart = (req, res) => {
       return;
     }
   
-    // Create a Tutorial
+    // Create a schema
 
     const cartDetails = new Schema({
         id: req.body.id,
@@ -28,7 +28,7 @@ exports.addToCart = (req, res) => {
         
     });
 
-    // Save Tutorial in the database
+    // Save shcema in the database
     
     cartDetails
       .save(cartDetails)

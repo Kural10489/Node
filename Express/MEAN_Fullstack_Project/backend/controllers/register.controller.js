@@ -1,7 +1,9 @@
 const db = require("../models/index");
 const Tutorial = db.tutorials;
 const jwt=require("jsonwebtoken")
-exports.create = (req, res) => {
+const bcrypt=require('bcrypt');
+
+exports.create = async(req, res) => {
   console.log("Register page da ithu");
 
 
@@ -13,6 +15,10 @@ exports.create = (req, res) => {
       return;
     }
     
+    //HAshing Password 
+    const salt =await bcrypt.genSalt(10);
+    const hashedPassword=await bcrypt.hash(req.body.password,salt)
+
     // Create a Tutorial
     console.log(req.body.firstName);
     const tutorial = new Tutorial({
@@ -20,7 +26,7 @@ exports.create = (req, res) => {
       lastName: req.body.lastName,
       mobileNumber: req.body.mobileNumber,
       email: req.body.email,
-      password: req.body.password,
+      password: hashedPassword,
       address: req.body.address,
       token:token,
       username:req.body.firstName

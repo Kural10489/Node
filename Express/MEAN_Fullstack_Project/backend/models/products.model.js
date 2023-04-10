@@ -19,7 +19,6 @@ module.exports = mongoose => {
     );
 
   
-    // const Schema = mongoose.model("tutorial", schema);
-    // return Schema;
+
     return schema;
   };

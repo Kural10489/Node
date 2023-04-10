@@ -7,13 +7,13 @@ exports.cartDetails = (req, res) => {
     Schema.find({})
     .then(data => {
       if (!data)
-        res.status(404).send({ message: "Not found Tutorial"});
+        res.status(404).send({ message: "Not found "});
       else res.send(data);
       
     })
     .catch(err => {
       res
         .status(500)
-        .send({ message: "Error retrieving Tutorial with id=" + id });
+        .send({ message: "Error retrieving data :" + data });
     });
   };
