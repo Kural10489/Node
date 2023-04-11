@@ -10,7 +10,7 @@ exports.Order= (req, res) => {
       return;
     }
   
-    // Create a Tutorial
+    // Create a Product
 console.log(req.body.username);
     const orderDetails = new Schema({
         id: req.body.id,
@@ -27,7 +27,7 @@ console.log(req.body.username);
         username:req.body.username
     });
 
-    // Save Tutorial in the database
+    // Save Products in the database
     
     orderDetails
       .save(orderDetails)
@@ -38,7 +38,7 @@ console.log(req.body.username);
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while creating the Tutorial."
+            err.message || "Some error occurred while creating the Products."
         });
       });
   };

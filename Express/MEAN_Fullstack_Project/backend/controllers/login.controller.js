@@ -1,5 +1,5 @@
 const db=require("../models/index")
-const Backend=db.tutorials;
+const Backend=db.users;
 let token;
 exports.login= (req,res)=>{
     console.log("Login page Ulla vantan!");

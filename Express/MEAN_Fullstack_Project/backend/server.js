@@ -4,14 +4,7 @@ const app = express();
 const createError=require('http-errors');
 const db = require("./models");
 
-const registerController=require('./controllers/register.controller')
-const loginController=require('./controllers/login.controller')
-const productsController=require('./controllers/products.controller');
-const cartPageController=require('./controllers/cartpage.controller');
-const cartDetailsController=require('./controllers/cartDetails.controller')
-const deleteProductController=require('./controllers/deleteProduct.controller')
-const orderpageController=require("./controllers/orderpage.controller")
-const orderDetailController=require("./controllers/orderDetails.controller");
+
 var corsOptions = {
   origin: "http://localhost:4200"
 };
@@ -19,11 +12,13 @@ var corsOptions = {
 
 app.use(cors(corsOptions));
 
-// parse requests of content-type - application/json
+
 app.use(express.json());
 
-// parse requests of content-type - application/x-www-form-urlencoded
+express.urlencoded({ extended: true })
 app.use(express.urlencoded({ extended: true }));
+
+// Database Connection
 db.mongoose
   .connect(db.url, {
     useNewUrlParser: true,
@@ -37,23 +32,14 @@ db.mongoose
     process.exit();
   });
 
+// Routes 
 
-app.get("/", (req, res) => {
-   res.json({"YEs":"Running"})
-   console.log("running");
-  });
-app.get("/user",loginController.login,);
-app.get('/products',productsController.getProducts)
-app.get('/cart',cartDetailsController.cartDetails)
-app.get('/OrderDetails',orderDetailController.orderDetails)
+require("./routes/register.routes")(app)
+require("./routes/login.routes")(app)
+require("./routes/products.routes")(app)
+require("./routes/cart.routes")(app)
+require("./routes/orders.routes")(app)
 
-app.post('/cart',cartPageController.addToCart)
-app.post("/register",registerController.create);
-// require("./routes/register.routes")(app)
-app.post("/user",loginController.login);
-app.post("/OrderDetails",orderpageController.Order)
-
-app.delete(`/cart/:id`,deleteProductController.deleteProduct);
 
 app.use(async(req,res,next)=>{
 next(createError.NotFound('This route does not exit'))

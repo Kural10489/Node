@@ -1,5 +1,5 @@
 const db = require("../models/index");
-const Tutorial = db.tutorials;
+const Users = db.users;
 const jwt=require("jsonwebtoken")
 const bcrypt=require('bcrypt');
 
@@ -19,9 +19,9 @@ exports.create = async(req, res) => {
     const salt =await bcrypt.genSalt(10);
     const hashedPassword=await bcrypt.hash(req.body.password,salt)
 
-    // Create a Tutorial
+    // Create a user
     console.log(req.body.firstName);
-    const tutorial = new Tutorial({
+    const users = new Users({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       mobileNumber: req.body.mobileNumber,
@@ -32,17 +32,17 @@ exports.create = async(req, res) => {
       username:req.body.firstName
     });
      
-    // Save Tutorial in the database
+    // Save users in the database
     
-    tutorial
-      .save(tutorial)
+    users
+      .save(users)
       .then(data => {
         res.send(data);
       })
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while creating the Tutorial."
+            err.message || "Some error occurred while creating the user."
         });
       });
   };

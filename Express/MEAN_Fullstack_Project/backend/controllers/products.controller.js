@@ -1,19 +1,19 @@
 const db = require("../models/index");
-const Tutorial = db.products;
+const Products = db.products;
 
 exports.getProducts = (req, res) => {
   console.log("products page GET ithu");
     // Validate request
-    Tutorial.find({})
+    Products.find({})
     .then(data => {
 
       if (!data)
-        res.status(404).send({ message: "Not found Tutorial"});
+        res.status(404).send({ message: "Not found Products"});
       else res.send(data);
     })
     .catch(err => {
       res
         .status(500)
-        .send({ message: "Error retrieving Tutorial with id=" + id });
+        .send({ message: "Error retrieving Products with id=" + id });
     });
   };
