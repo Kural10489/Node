@@ -12,20 +12,7 @@ exports.Order= (req, res) => {
   
     // Create a Product
 console.log(req.body.username);
-    const orderDetails = new Schema({
-        id: req.body.id,
-        title: req.body.title,
-        price: req.body.price,
-        description: req.body.description,
-        category: req.body.category,
-        quantity: req.body.quantity,
-        size:req.body.size,
-        image: req.body.image,
-        image2: req.body.image2,
-        image3: req.body.image3,
-        image4: req.body.image4,
-        username:req.body.username
-    });
+      const orderDetails = new Schema(req.body);
 
     // Save Products in the database
     

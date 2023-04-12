@@ -4,9 +4,11 @@ const Products = db.products;
 exports.getProducts = (req, res) => {
   console.log("products page GET ithu");
     // Validate request
-    Products.find({})
+    console.log(req.params.category); 
+    const ids=req.params.id;
+    Products.find({category:req.params.category})
     .then(data => {
-
+      console.log(data);
       if (!data)
         res.status(404).send({ message: "Not found Products"});
       else res.send(data);

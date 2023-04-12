@@ -3,7 +3,7 @@ module.exports = (app) => {
 
   var router = require("express").Router();
 
-  router.get("/", productsController.getProducts);
+  router.get("/:category", productsController.getProducts);
 
   app.use("/products", router);
 };

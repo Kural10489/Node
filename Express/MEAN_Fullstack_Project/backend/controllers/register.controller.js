@@ -7,7 +7,7 @@ exports.create = async(req, res) => {
   console.log("Register page da ithu");
 
 
-  const token=jwt.sign({username:req.body.firstName},"secret")
+  const token=jwt.sign({username:req.body.firstName,email:req.body.email},"secret")
     // Validate request
     if (!req.body.firstName) {
       res.status(400).send({ message: "Content can not be empty!" });

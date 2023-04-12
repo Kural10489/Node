@@ -1,20 +1,18 @@
-const db=require("../models/index")
-const Backend=db.users;
-let token;
-exports.login= (req,res)=>{
-    console.log("Login page Ulla vantan!");
+const db = require("../models/index");
+const Backend = db.users;
+const bcrypt=require("bcrypt");
 
-Backend.find({})
-.then(data => {
-
-  if (!data)
-    res.status(404).send({ message: "Not found with id " + data });
-
-  else res.send(data);
-})
-.catch(err => {
-  res
-    .status(500)
-    .send({ message: "Error retrieving with id=" + data });
-});
-} 
+exports.login = async (req, res) => {
+  try{
+  console.log("login POST");
+  const { email, password } = req.body;
+  console.log(req.body)
+  const user = await Backend.findOne({ email });
+  const validUser=await bcrypt.compare(password,user.password);
+  console.log(validUser)  
+  res.json(user.token)
+}
+catch{
+  res.send("Invalid Username/Password")
+}
+};

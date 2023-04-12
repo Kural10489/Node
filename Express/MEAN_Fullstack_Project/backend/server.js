@@ -41,10 +41,7 @@ require("./routes/cart.routes")(app)
 require("./routes/orders.routes")(app)
 
 
-app.use(async(req,res,next)=>{
-next(createError.NotFound('This route does not exit'))
 
-})
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
