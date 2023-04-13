@@ -8,7 +8,7 @@ exports.getProducts = (req, res) => {
     const ids=req.params.id;
     Products.find({category:req.params.category})
     .then(data => {
-      console.log(data);
+
       if (!data)
         res.status(404).send({ message: "Not found Products"});
       else res.send(data);

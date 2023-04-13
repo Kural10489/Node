@@ -4,7 +4,7 @@ module.exports = (app) => {
   var router = require("express").Router();
 
   router.post("/", loginController.login);
-  router.get("/", loginController.login);
+  // router.get("/", loginController.login);
 
   app.use("/user", router);
 };
