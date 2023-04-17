@@ -4,6 +4,7 @@ module.exports = (app) => {
   var router = require("express").Router();
 
   router.get("/:category", productsController.getProducts);
+  router.get("/product-detail/:id", productsController.getSingleProduct);
 
   app.use("/products", router);
 };

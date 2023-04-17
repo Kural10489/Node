@@ -11,9 +11,8 @@ module.exports = mongoose => {
           quantity: String,
           size:String,
           image: String,
-          image2:String,
-          image3: String,
-          image4: String,
+          totalAmount:Number,
+          orderPlacedOn:String,
           username:String
         },
         { timestamps: true }

@@ -13,7 +13,7 @@ exports.Order= (req, res) => {
     // Create a Product
 console.log(req.body.username);
       const orderDetails = new Schema(req.body);
-
+      console.log(orderDetails);
     // Save Products in the database
     
     orderDetails

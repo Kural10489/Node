@@ -1,21 +1,28 @@
-const db = require("../models/index");
-const Products = db.products;
+const productsService=require("../service/products.service")
 
-exports.getProducts = (req, res) => {
+module.exports={
+
+getProducts : async(req, res) => {
   console.log("products page GET ithu");
     // Validate request
-    console.log(req.params.category); 
-    const ids=req.params.id;
-    Products.find({category:req.params.category})
-    .then(data => {
+    try{
+     const products=await productsService.getProductsService(req,res);
+      res.status(200).send(products);
+    }
+    catch(error){
+      res.status(404).send(error.message);
+    }
 
-      if (!data)
-        res.status(404).send({ message: "Not found Products"});
-      else res.send(data);
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .send({ message: "Error retrieving Products with id=" + id });
-    });
-  };
+  },
+  getSingleProduct:async(req,res)=>{
+    console.log("product page GET ithu");
+    // Validate request
+    try{
+     const product=await productsService.getSingleProductService(req,res);
+      res.status(200).send(product);
+    }
+    catch(error){
+      res.status(404).send(error.message);
+    }
+  }
+}
